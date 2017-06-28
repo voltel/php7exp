@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+  {# Посты других людей #}
+
+  {% block title %}Index Page{% endblock %}
+
+  {% block content %}
+    <section id="posts_list" class="row">
+      {% include 'posts.html.twig' %}
+    </section>
+
+    <div class="text-center my-4">
+      <button id="show_next_page" class="btn btn-primary">Show more posts&hellip;</button>
+    </div>
+  {% endblock %}
+
+  {% block additional_markup %}
+    <!-- Modal window - publish a new user post -->
+    {% include 'modals/post_modal.html.twig' %}
+
+    <!-- Modal window - add a comment -->
+    {% include 'modals/comments_modal.html.twig' %}
+  {% endblock %}
+
+  {% block scripts %}
+    <script src="/js/pagination.js"></script>
+
+    {# JS для обеспечения механизма Liking/Unliking #}
+    <script src="/js/liking.js"></script>
+  {% endblock %}

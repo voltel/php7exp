@@ -1,0 +1,34 @@
+App\Model\User:
+  type: entity
+  table: users
+  repositoryClass: App\Model\UserRepository 
+  id:
+      id:
+        type: integer
+        generator:
+            strategy: AUTO
+  fields:
+    email:
+      type: string
+      length: 100
+      unique: true
+    password:
+      type: string
+      length: 255
+    name:
+      type: string
+      length: 50
+      options:
+        default: "user_xx"
+    role:
+      type: string
+      length: 10
+      options:
+        default: "user"
+  indexes:
+      name_index:
+        columns: [ name ]
+oneToMany:
+    posts:
+        targetEntity: Post
+        mappedBy: user

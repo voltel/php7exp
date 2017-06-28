@@ -1,0 +1,85 @@
+{# Оформление, необходимое для загрузки файлов на сервер с помощью jQuery #}
+{% block link_css %}
+  <link rel="stylesheet" href="/js/vendor/jqfileupload/css/jquery.fileupload.css">
+{% endblock %}
+
+
+{% block additional_markup %}
+<div id="postModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-lable="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Publish a post</h4>
+      </div><!-- /.modal-header -->
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-11">
+            <form id="postForm" method="PUT" action="{{ path('submit_user_post_ajax') }}" class="form-horizontal">
+
+              <!-- Title of the post -->
+              <div class="form-group">
+                <label for="inputTitle" class="col-sm-3 control-label">Title</label>
+                <div class="col-sm-9">
+                  <input name="title" type="text" class="form-control" id="inputTitle" placeholder="Title of your post"/>
+                </div><!-- /.col-sm-9 -->
+              </div><!-- /.form-group-->
+
+              <!-- Description -->
+              <div class="form-group">
+                <label for="inputDescription" class="col-sm-3 control-label">Description</label>
+                <div class="col-sm-9">
+                  <textarea rows="5" name="description" type="text" class="form-control" id="inputDescription" placeholder="Text of the post"/></textarea>
+                </div><!-- /.col-sm-9 -->
+              </div><!-- /.form-group-->
+
+              <!-- Image Upload -->
+              <div class="form-group">
+                <label for="fileupload" class="col-sm-3 control-label">Upload a photo</label>
+                <div class="col-sm-9">
+                  <input id="fileupload" name="image" type="file" data-xxx="" />
+                  <div class="progress" id="progress">
+                    <div class="progress-bar bar" role="progressbar"></div>
+                  </div><!-- /.progress -->
+
+                  <div id="imagePreview"></div>
+                  <input id="imageName" name="imageName" type="hidden">
+                </div><!-- /.col-sm-9 -->
+              </div><!-- /.form-group-->
+
+
+              <div class="modal-footer">
+                <input name="token" type="hidden" value="{{ csrf.getToken('token') }}" />
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Publish</button>
+              </div><!-- /.modal-footer -->
+
+            </form>
+          </div><!-- /.col-sm-11 -->
+        </div><!-- /.row -->
+      </div><!-- /.modal-body -->
+
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock %}
+
+
+{# JS скрипты, необходимые для загрузки файлов на сервер с помощью jQuery #}
+{% block scripts %}
+  <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+  <script src="/js/vendor/jqfileupload/js/vendor/jquery.ui.widget.js"></script>
+
+  <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+  <script src="/js/vendor/jqfileupload/js/jquery.iframe-transport.js"></script>
+
+  <!-- The basic File Upload plugin -->
+  <script src="/js/vendor/jqfileupload/js/jquery.fileupload.js"></script>
+
+  <!-- Обработка создания поста и загрузки файлов в создаваемый пост -->
+  <script src="/js/user_post.js"></script>
+
+{% endblock%}

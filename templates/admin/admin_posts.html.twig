@@ -1,0 +1,17 @@
+{% extends 'admin/admin_base.html.twig' %}
+    {% block title %}Posts Management - Admin Panel{% endblock %}
+
+
+    {% block content %}
+        <div class="row">
+            <div class="col-12">
+                <h2>Posts management</h2>
+                <div id="postsTableContainer"></div>
+            </div>{# /.col-12 #}
+        </div>{# /.row #}
+    {% endblock %}
+
+
+    {% block scripts %}
+        <script src="/js/jtable_setup_posts.js"></script>
+    {% endblock %}

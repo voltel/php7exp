@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+  {# Посты текущего пользователя #}
+
+  {% block title %}Dashboard{% endblock %}
+
+  {% block content %}
+    <h2>My Posts</h2>
+    <blockquote><p>Loading&hellip;</p></blockquote>
+
+    <section id="posts_list" class="row">
+      {% include 'posts.html.twig' %}
+    </section>
+  {% endblock %}
+
+  {% block additional_markup %}
+    <!-- Modal window - publish a new user post -->
+    {% include 'modals/post_modal.html.twig' %}
+
+    <!-- Modal window - add a comment -->
+    {% include 'modals/comments_modal.html.twig' %}
+  {% endblock %}

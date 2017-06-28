@@ -1,0 +1,59 @@
+{# Оформление css #}
+{% block link_css %}{% endblock %}
+
+
+{% block additional_markup %}
+<div id="commentModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-lable="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add a comment</h4>
+      </div><!-- /.modal-header -->
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <form id="commentForm" method="POST" action="{{ path('post_comment') }}" class="form-horizontal">
+
+              <!-- User comment to the post -->
+              <div class="form-group">
+                <label for="inputComment" class="control-label">Comment text:</label>
+                <textarea rows="3" name="comment" type="text" class="form-control" id="textarea_comment" placeholder="Enter text of your comment here"></textarea>
+              </div><!-- /.form-group-->
+
+              <!-- Modal window footer -->
+              <div class="form-group">
+                <input type="hidden" id="commentPostId" name="postId" value=""/>
+                <input type="hidden" name="token" value="{{ csrf.getToken('token')}}" />
+                <button class="btn btn-primary pull-right" type="submit">Publish</button>
+                </div><!-- /.form-group-->
+
+            </form>
+          </div><!-- / col-12 -->
+        </div><!-- /.row -->
+
+        <div class="">
+          <div class="">
+              <div id="comments_list" class="row">Loading&hellip;</div>
+          </div><!-- / -->
+        </div><!-- / -->
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div><!-- /.modal-footer -->
+
+      </div><!-- /.modal-body -->
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock %}
+
+
+{# JS скрипты, необходимые для работы загрузки комментов в режиме AJAX #}
+{% block scripts %}
+  <script src="/js/comments.js"></script>
+{% endblock%}

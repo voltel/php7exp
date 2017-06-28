@@ -1,0 +1,10 @@
+/* main.css */
+
+image.card-img-top
+{
+  max-height: 600px;
+}
+
+[class^='icon'] {
+  cursor: pointer
+}

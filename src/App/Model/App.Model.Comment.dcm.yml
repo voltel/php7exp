@@ -1,0 +1,32 @@
+App\Model\Comment:
+  type: entity
+  table: comments
+  repositoryClass: App\Model\CommentRepository
+  manyToOne:
+    post:
+      targetEntity: App\Model\Post
+      joinColumn:
+        name: post_id
+        referencedColumnName: id
+        nullable: FALSE
+        onDelete: CASCADE
+        onUpdate: CASCADE
+    user:
+      targetEntity: App\Model\User
+      loading: EAGER
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+        nullable: FALSE
+        onDelete: CASCADE
+        onUpdate: CASCADE
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    comment:
+      type: text
+    posted_at:
+      type: datetime

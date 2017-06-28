@@ -1,0 +1,38 @@
+{% block post %}
+  <article class="col-12 col-sm-6 col-md-4 col-lg-3 my-4">
+    <div class="card">
+      <div class="card-header">{{ post.title }}</div>
+      <img class="card-img-top img-fluid" src="images/{{ post.image }}" alt="post image placeholder"/>
+      <div class="card-block">
+        <p class="card-text">{{ post.description }}</p>
+      </div>
+      <div class="card-footer bg-info text-right">
+        <div class="row">
+
+            {# Количество комментариев #}
+            <div class="col">
+              <span id="num_comments_for_post_{{ post.getId() }}">{{ post.getCommentsNum() }}</span>
+              <span class="icon-comment-empty" data-post_id="{{ post.getId() }}" data-toggle="modal" data-target="#commentModal"></span>
+            </div>
+
+            {# Количество лайков и статус лайка пользователя #}
+            <div class="col">
+              {% set user = app.user_session.getUser(app.session) %}
+              {% if post.isLikedByUser(user) %}
+                {% set likeStatus = 'liked' %}
+                {% set likeColor = 'text-danger' %}
+                {% set icon_class = 'icon-thumbs-up-alt' %}
+              {% else %}
+                {% set likeStatus = 'not_liked' %}
+                {% set likeColor = 'text-muted' %}
+                {% set icon_class = 'icon-thumbs-up' %}
+              {% endif %}
+
+              <span id="num_likes_for_post_{{ post.id }}">{{ post.getNumLikes() }}</span>
+              <span id="thumb_up_for_post_{{ post.id }}" data-like_status="{{ likeStatus }}" class="{{ likeColor }} {{ icon_class}}" class="icon-thumbs-up"></span>
+            </div>
+        </div><!-- /.row -->
+      </div><!-- /.card-footer -->
+    </div><!-- /.card -->
+  </article>
+{% endblock %}
