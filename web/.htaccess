@@ -1,2 +1,2 @@
 # Нужно убедиться, что опция AllowOverride для виртуального хоста включена в All или Indexes
-# FallbackResource /index_dev.php
+FallbackResource /index_dev.php
