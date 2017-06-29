@@ -11,10 +11,13 @@
 /app/config/db_credentials.php
 
 
+<<<<<<< HEAD
 # silex logs
 # git rm --cached -r app/logs
 /app/logs/*
 
+=======
+>>>>>>> 6f8245e7f7a9a6191d2a0094bacfd95e3f2a0249
 # Email spool folder
 /app/spool/*
 
