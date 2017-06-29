@@ -6,6 +6,11 @@
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 
+
+# db_credentials
+/app/config/db_credentials.php
+
+
 # Email spool folder
 /app/spool/*
 
