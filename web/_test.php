@@ -1,9 +1,10 @@
 <?php
-
+// Some new comment
 $hello = "world";
 
 if (!isset($_SESSION)) session_start();
 require_once("sql.req.php");
+
 
 
 // friend requests
