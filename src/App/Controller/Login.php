@@ -68,7 +68,6 @@ class Login
    */
   public function showFormAction() : Response
   {
-    exit('Login::showFormAction');
     return $this->createForm('login.html.twig');
   }//end of function
 

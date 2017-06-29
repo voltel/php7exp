@@ -6,6 +6,15 @@
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 
+
+# db_credentials
+/app/config/db_credentials.php
+
+
+# silex logs
+# git rm --cached -r app/logs
+/app/logs/*
+
 # Email spool folder
 /app/spool/*
 
